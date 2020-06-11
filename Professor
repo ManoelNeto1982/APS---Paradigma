@@ -1,0 +1,42 @@
+state(florida).
+season(winter).
+head(black).
+cheek(white).
+size(_).
+wings(_).
+nostrils(_).
+live(_).
+bill(_).
+neck(_).
+color(_).
+flight(_).
+feet(_).
+voice(_).
+province(_).
+
+family(goose) :- order(canada_bird).
+family(albatross) :- order(tubenose), size(large),wings(long_narrow).
+family(swan) :- order(waterfowl), neck(long), color(white), flight(ponderous).
+
+order(tubenose) :- nostrils(external_tubular), live(at_sea),bill(hooked).
+order(waterfowl) :- feet(webbed), bill(flat).
+order(canada_bird) :- head(black), cheek(white).
+
+region(new_england):- state(X), member(X, [massachusetts, vermont,maine]).
+region(south_east):- state(X), member(X, [florida, mississippi,virginia]).
+
+country(united_states):- region(mid_west).
+country(united_states):- region(south_east).
+country(united_states):- region(north_east).
+country(united_states):- region(mid_atlantic).
+country(canada):- province(ontario).
+country(canada):- province(quebec).
+
+bird(laysan_albatross) :- family(albatross), color(white).
+bird(black_footed_albatross):- family(albatross), color(dark). 
+bird(whistling_swan) :- family(swan),voice(muffled_musical_whistle).
+bird(mallard):- family(duck), voice(quack), head(green).
+bird(mallard):- family(duck), voice(quack), color(mottled_brown).
+bird(trumpeter_swan) :-family(swan), voice(loud_trumpeting).
+bird(canada_goose):- family(goose), season(winter),country(united_states),head(black), cheek(white). 
+bird(canada_goose):- family(goose), season(summer), country(canada),head(black), cheek(white).
